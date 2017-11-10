@@ -6,14 +6,14 @@
  * per-product basis. This is handy when you want to send a customer to a page
  * outlining next steps, prompt a customer to sign up for a mailing list, etc.
  *
- * @link                  https://github.com/boogah/wc-custom-thank-you-redirect
+ * @link                  https://github.com/liquidweb/woocommerce-custom-thank-you
  * @package               WC_Custom_Thank_You
  * @author                Liquid Web
  * @license               GPL-3.0
  * @wordpress-plugin
  *
  * Plugin Name:           WooCommerce Custom Thank You
- * Plugin URI:            https://github.com/boogah/wc-custom-thank-you-redirect
+ * Plugin URI:            https://github.com/liquidweb/woocommerce-custom-thank-you
  * Description:           A WooCommerce extension that allows you to set a custom "Thank You" page on a per-product basis.
  * Author:                Liquid Web
  * Author URI:            https://www.liquidweb.com/

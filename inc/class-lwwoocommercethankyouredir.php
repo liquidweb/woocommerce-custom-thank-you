@@ -11,7 +11,7 @@
 namespace LWWooCommerceThankYouRedir;
 
 /**
- * Just the one class. Don't bother to looking for any others.
+ * Just the one class. Don't bother looking for any others.
  */
 class LWWooCommerceThankYouRedir {
 

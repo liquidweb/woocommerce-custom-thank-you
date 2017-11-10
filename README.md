@@ -13,7 +13,7 @@ This is handy when you want to:
 
 ## Installation
 
-1. Upload the `wc-custom-thank-you-redirect` directory into the `/wp-content/plugins/` directory.
+1. Upload the `woocommerce-custom-thank-you` directory into the `/wp-content/plugins/` directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
 3. Set a global "Thank You" page under "WooCommerce -> Settings -> Checkout -> Checkout options -> Checkout pages".
 
