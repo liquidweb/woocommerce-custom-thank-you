@@ -21,7 +21,7 @@
  * Text Domain:           wc-custom-thank-you
  * Domain Path:           /languages
  * WC requires at least:  3.0.0
- * WC tested up to:       3.2.0
+ * WC tested up to:       3.3.0
  */
 
 // Define our constants.
