@@ -17,7 +17,7 @@
  * Description:           A WooCommerce extension that allows you to set a custom "Thank You" page on a per-product basis.
  * Author:                Liquid Web
  * Author URI:            https://www.liquidweb.com/
- * Version:               1.0.0
+ * Version:               1.0.1
  * Text Domain:           wc-custom-thank-you
  * Domain Path:           /languages
  * WC requires at least:  3.0.0
@@ -25,7 +25,7 @@
  */
 
 // Define our constants.
-define( 'WOOTHANKS_VERSION', '1.0.0' );
+define( 'WOOTHANKS_VERSION', '1.0.1' );
 define( 'WOOTHANKS_URL', plugins_url( '', __FILE__ ) );
 
 // Include only the basics.
