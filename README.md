@@ -15,7 +15,7 @@ This is handy when you want to:
 
 1. Upload the `woocommerce-custom-thank-you` directory into the `/wp-content/plugins/` directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
-3. Set a global "Thank You" page under "WooCommerce -> Settings -> Checkout -> Checkout options -> Checkout pages".
+3. Set a global "Thank You" page under "WooCommerce -> Settings -> Checkout -> Checkout options -> Checkout pages". (Optional)
 
 ## Setting a custom "Thank You" page
 
@@ -27,3 +27,19 @@ This is handy when you want to:
 
 * Setting a *global* or *custom* "Thank You" page overrides the normal "Order received" display post-checkout.
 * If a customer has multiple products with multiple *custom* thank you pages in their cart, the *global* default is used.
+
+## Screenshots
+
+### Global setting
+
+![](assets/doc/img/thank-you-redir.global.png)
+
+### Product setting
+
+![](assets/doc/img/thank-you-redir.unset.png)
+
+![](assets/doc/img/thank-you-redir.set.png)
+
+### Checkout with thank you redirect set
+
+![](assets/doc/img/custom-thank-you.gif)
