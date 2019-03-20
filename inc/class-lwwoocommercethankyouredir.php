@@ -46,7 +46,7 @@ class LWWooCommerceThankYouRedir {
 
 		// Custom thank you page handling after checkout.
 		add_action( 'woocommerce_thankyou', array( $this, 'redirect_thank_you_page' ) );
-		add_filter( 'woocommerce_payment_gateways_settings', array( $this, 'custom_thank_you_page' ) );
+		add_filter( 'woocommerce_general_settings', array( $this, 'custom_thank_you_page' ) );
 	}
 
 	/**
@@ -57,12 +57,15 @@ class LWWooCommerceThankYouRedir {
 	 */
 	public function custom_thank_you_page( $settings ) {
 
-		// Loop our settings to add our own.
-		foreach ( $settings as $key => $value ) {
+		$updated_settings = array();
 
-			// Add our key check.
-			if ( 10 === $key ) {
-				$settings[ $key ] = array(
+		foreach ( $settings as $section ) {
+
+			// At the bottom of the General Options section.
+			if ( isset( $section['id'] ) && 'general_options' === $section['id'] &&
+			isset( $section['type'] ) && 'sectionend' === $section['type'] ) {
+
+				$updated_settings[] = array(
 					'title'    => __( 'Thank you page', 'woocommerce' ),
 					'desc'     => __( 'Add a custom, global thank you page to redirect to after the checkout process is complete.', 'woocommerce' ),
 					'id'       => 'woocommerce_custom_thankyou_page_id',
@@ -74,14 +77,11 @@ class LWWooCommerceThankYouRedir {
 				);
 			}
 
-			// If our key is greater, add one to be safe.
-			if ( $key >= 10 ) {
-				$settings[ $key + 1 ] = $value;
-			}
+			$updated_settings[] = $section;
 		}
 
 		// Return the settings array.
-		return $settings;
+		return $updated_settings;
 	}
 
 	/**
@@ -125,7 +125,7 @@ class LWWooCommerceThankYouRedir {
 	public function hint_thank_you_pages() {
 
 		// Set our search param.
-		$search = isset( $_REQUEST['search'] ) ? $_REQUEST['search'] : '';
+		$search = isset( $_REQUEST['search'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['search'] ) ) : '';
 
 		// Set our query args.
 		$query = new \WP_Query(
@@ -255,7 +255,9 @@ class LWWooCommerceThankYouRedir {
 			$page = get_permalink( (int) $fallback );
 
 			// And redirect.
-			wp_safe_redirect( $page );
+			set_transient( 'wcty_order_' . $order_id, md5( $order_id - 1 ), 60 ); // Only for 1 min.
+			$hask_key = get_transient( 'wcty_order_' . $order_id );
+			wp_safe_redirect( $page . '?action=thank_you_page&order_id=' . $order_id . '&hash=' . $hask_key );
 			exit;
 		}
 
@@ -277,7 +279,9 @@ class LWWooCommerceThankYouRedir {
 			$page = ! empty( $meta ) ? get_permalink( (int) $meta ) : get_permalink( (int) $fallback );
 
 			// And redirect.
-			wp_safe_redirect( $page );
+			set_transient( 'wcty_order_' . $order_id, md5( $order_id - 1 ), 60 ); // For 1 min.
+			$hask_key = get_transient( 'wcty_order_' . $order_id );
+			wp_safe_redirect( $page . '?action=thank_you_page&order_id=' . $order_id . '&hash=' . $hask_key );
 			exit;
 		}
 
