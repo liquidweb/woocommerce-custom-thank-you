@@ -32,7 +32,7 @@ class WCTYController {
 				$hask_key = get_transient( 'wcty_order_' . sanitize_text_field( wp_unslash( $_REQUEST['order_id'] ) ) );
 				if ( ! empty( $hask_key ) && $hask_key === $_REQUEST['hash'] ) {
 					$order = wc_get_order( sanitize_text_field( wp_unslash( $_REQUEST['order_id'] ) ) );
-					return wcty_view( 'order-details', array( 'order' => $order ) );
+					return wcty_view( 'order-stub', array( 'order' => $order ) );
 				}
 			}
 		}
